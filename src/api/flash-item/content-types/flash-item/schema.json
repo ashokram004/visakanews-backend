@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "flash_news",
+  "info": {
+    "singularName": "flash-item",
+    "pluralName": "flash-news",
+    "displayName": "FlashNews"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "headline": {
+      "type": "string",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}
