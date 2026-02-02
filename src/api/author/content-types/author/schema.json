@@ -43,6 +43,9 @@
     "instagram": {
       "type": "string"
     },
+    "telegram": {
+      "type": "string"
+    },
     "articles": {
       "type": "relation",
       "relation": "oneToMany",

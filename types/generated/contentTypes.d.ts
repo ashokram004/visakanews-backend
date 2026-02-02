@@ -519,6 +519,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     mail: Schema.Attribute.Email & Schema.Attribute.Unique;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    telegram: Schema.Attribute.String;
     twitter: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
