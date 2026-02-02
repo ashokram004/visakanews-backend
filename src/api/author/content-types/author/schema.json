@@ -37,6 +37,12 @@
     "youtube": {
       "type": "string"
     },
+    "whatsapp": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
     "articles": {
       "type": "relation",
       "relation": "oneToMany",

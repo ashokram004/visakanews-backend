@@ -21,6 +21,11 @@
     },
     "order": {
       "type": "integer"
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
     }
   }
 }

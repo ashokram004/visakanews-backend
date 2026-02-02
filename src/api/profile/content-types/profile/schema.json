@@ -49,6 +49,9 @@
       "type": "text",
       "required": true
     },
+    "homeVideo": {
+      "type": "string"
+    },
     "detailedBio": {
       "type": "blocks"
     },
@@ -72,12 +75,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::profile-achievement.profile-achievement",
-      "mappedBy": "profile"
-    },
-    "profileActivities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::profile-activity.profile-activity",
       "mappedBy": "profile"
     }
   }

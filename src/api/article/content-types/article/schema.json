@@ -35,9 +35,6 @@
       "type": "blocks",
       "required": true
     },
-    "excerpt": {
-      "type": "string"
-    },
     "coverImage": {
       "type": "media",
       "multiple": false,

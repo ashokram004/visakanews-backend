@@ -454,7 +454,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::dynamic-tab.dynamic-tab'
     >;
-    excerpt: Schema.Attribute.String;
     isFeatured: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
@@ -498,6 +497,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     facebook: Schema.Attribute.String;
+    instagram: Schema.Attribute.String;
     linkedin: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -512,6 +512,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    whatsapp: Schema.Attribute.String;
     youtube: Schema.Attribute.String;
   };
 }
@@ -595,6 +596,7 @@ export interface ApiFlashItemFlashItem extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -647,39 +649,6 @@ export interface ApiProfileAchievementProfileAchievement
   };
 }
 
-export interface ApiProfileActivityProfileActivity
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'profile_activities';
-  info: {
-    displayName: 'ProfileActivity';
-    pluralName: 'profile-activities';
-    singularName: 'profile-activity';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    date: Schema.Attribute.Date;
-    description: Schema.Attribute.Blocks;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::profile-activity.profile-activity'
-    > &
-      Schema.Attribute.Private;
-    order: Schema.Attribute.Integer;
-    profile: Schema.Attribute.Relation<'manyToOne', 'api::profile.profile'>;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
   collectionName: 'profiles';
   info: {
@@ -697,6 +666,7 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     detailedBio: Schema.Attribute.Blocks;
+    homeVideo: Schema.Attribute.String;
     isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -708,10 +678,6 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     profileAchievements: Schema.Attribute.Relation<
       'oneToMany',
       'api::profile-achievement.profile-achievement'
-    >;
-    profileActivities: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::profile-activity.profile-activity'
     >;
     profileImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     profileType: Schema.Attribute.Enumeration<
@@ -1277,7 +1243,6 @@ declare module '@strapi/strapi' {
       'api::dynamic-tab.dynamic-tab': ApiDynamicTabDynamicTab;
       'api::flash-item.flash-item': ApiFlashItemFlashItem;
       'api::profile-achievement.profile-achievement': ApiProfileAchievementProfileAchievement;
-      'api::profile-activity.profile-activity': ApiProfileActivityProfileActivity;
       'api::profile.profile': ApiProfileProfile;
       'api::video.video': ApiVideoVideo;
       'plugin::content-releases.release': PluginContentReleasesRelease;
