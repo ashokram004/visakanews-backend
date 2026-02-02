@@ -25,9 +25,14 @@
       "required": true,
       "enum": [
         "News",
+        "Politics",
         "Jobs",
         "Education",
         "Movies",
+        "Business",
+        "Technology",
+        "Medical",
+        "Environment",
         "Trending"
       ]
     },

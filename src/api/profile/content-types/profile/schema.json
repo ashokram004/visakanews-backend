@@ -27,7 +27,8 @@
         "POLITICIAN",
         "ACTOR",
         "SPORTSPERSON",
-        "CELEBRITY"
+        "CELEBRITY",
+        "INFLUENCER"
       ]
     },
     "profileImage": {

@@ -464,7 +464,18 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     primaryCategory: Schema.Attribute.Enumeration<
-      ['News', 'Jobs', 'Education', 'Movies', 'Trending']
+      [
+        'News',
+        'Politics',
+        'Jobs',
+        'Education',
+        'Movies',
+        'Business',
+        'Technology',
+        'Medical',
+        'Environment',
+        'Trending',
+      ]
     > &
       Schema.Attribute.Required;
     profiles: Schema.Attribute.Relation<'manyToMany', 'api::profile.profile'>;
@@ -681,7 +692,7 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     >;
     profileImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     profileType: Schema.Attribute.Enumeration<
-      ['POLITICIAN', 'ACTOR', 'SPORTSPERSON', 'CELEBRITY']
+      ['POLITICIAN', 'ACTOR', 'SPORTSPERSON', 'CELEBRITY', 'INFLUENCER']
     > &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
