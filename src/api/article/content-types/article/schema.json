@@ -53,18 +53,12 @@
     "isFeatured": {
       "type": "boolean",
       "required": true,
-      "default": false
+      "default": true
     },
     "dynamicTabs": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::dynamic-tab.dynamic-tab",
-      "inversedBy": "articles"
-    },
-    "profiles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::profile.profile",
       "inversedBy": "articles"
     },
     "videos": {

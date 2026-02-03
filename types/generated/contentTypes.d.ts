@@ -456,7 +456,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     >;
     isFeatured: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
+      Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -478,7 +478,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       ]
     > &
       Schema.Attribute.Required;
-    profiles: Schema.Attribute.Relation<'manyToMany', 'api::profile.profile'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -650,7 +649,6 @@ export interface ApiProfileAchievementProfileAchievement
       'api::profile-achievement.profile-achievement'
     > &
       Schema.Attribute.Private;
-    order: Schema.Attribute.Integer;
     profile: Schema.Attribute.Relation<'manyToOne', 'api::profile.profile'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -658,6 +656,38 @@ export interface ApiProfileAchievementProfileAchievement
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     year: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiProfileActivityProfileActivity
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'profile_activities';
+  info: {
+    displayName: 'ProfileActivity';
+    pluralName: 'profile-activities';
+    singularName: 'profile-activity';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    description: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::profile-activity.profile-activity'
+    > &
+      Schema.Attribute.Private;
+    profile: Schema.Attribute.Relation<'manyToOne', 'api::profile.profile'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -672,7 +702,6 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     coverImage: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -687,15 +716,16 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    profile_activities: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::profile-activity.profile-activity'
+    >;
     profileAchievements: Schema.Attribute.Relation<
       'oneToMany',
       'api::profile-achievement.profile-achievement'
     >;
     profileImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    profileType: Schema.Attribute.Enumeration<
-      ['POLITICIAN', 'ACTOR', 'SPORTSPERSON', 'CELEBRITY', 'INFLUENCER']
-    > &
-      Schema.Attribute.Required;
+    profileType: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     shortBio: Schema.Attribute.Text & Schema.Attribute.Required;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
@@ -1255,6 +1285,7 @@ declare module '@strapi/strapi' {
       'api::dynamic-tab.dynamic-tab': ApiDynamicTabDynamicTab;
       'api::flash-item.flash-item': ApiFlashItemFlashItem;
       'api::profile-achievement.profile-achievement': ApiProfileAchievementProfileAchievement;
+      'api::profile-activity.profile-activity': ApiProfileActivityProfileActivity;
       'api::profile.profile': ApiProfileProfile;
       'api::video.video': ApiVideoVideo;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -21,15 +21,7 @@
       "required": true
     },
     "profileType": {
-      "type": "enumeration",
-      "required": true,
-      "enum": [
-        "POLITICIAN",
-        "ACTOR",
-        "SPORTSPERSON",
-        "CELEBRITY",
-        "INFLUENCER"
-      ]
+      "type": "string"
     },
     "profileImage": {
       "type": "media",
@@ -60,12 +52,6 @@
       "type": "boolean",
       "default": true
     },
-    "articles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::article.article",
-      "mappedBy": "profiles"
-    },
     "videos": {
       "type": "relation",
       "relation": "manyToMany",
@@ -76,6 +62,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::profile-achievement.profile-achievement",
+      "mappedBy": "profile"
+    },
+    "profile_activities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::profile-activity.profile-activity",
       "mappedBy": "profile"
     }
   }

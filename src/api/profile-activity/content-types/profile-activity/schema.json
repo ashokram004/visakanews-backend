@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "profile_achievements",
+  "collectionName": "profile_activities",
   "info": {
-    "singularName": "profile-achievement",
-    "pluralName": "profile-achievements",
-    "displayName": "ProfileAchievement"
+    "singularName": "profile-activity",
+    "pluralName": "profile-activities",
+    "displayName": "ProfileActivity"
   },
   "options": {
     "draftAndPublish": true
@@ -18,14 +18,14 @@
     "description": {
       "type": "blocks"
     },
-    "year": {
-      "type": "integer"
+    "date": {
+      "type": "date"
     },
     "profile": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::profile.profile",
-      "inversedBy": "profileAchievements"
+      "inversedBy": "profile_activities"
     }
   }
 }
