@@ -514,6 +514,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    shares: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;

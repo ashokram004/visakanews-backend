@@ -82,6 +82,10 @@
     "views": {
       "type": "integer",
       "default": 0
+    },
+    "shares": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
