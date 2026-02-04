@@ -69,6 +69,10 @@
       "relation": "oneToMany",
       "target": "api::profile-activity.profile-activity",
       "mappedBy": "profile"
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
     }
   }
 }

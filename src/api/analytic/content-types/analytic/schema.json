@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "analytics",
+  "info": {
+    "singularName": "analytic",
+    "pluralName": "analytics",
+    "displayName": "Analytic"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageUrl": {
+      "type": "string",
+      "required": true
+    },
+    "pageType": {
+      "type": "string",
+      "required": true
+    },
+    "device": {
+      "type": "string"
+    },
+    "referrer": {
+      "type": "string"
+    },
+    "ipAddress": {
+      "type": "string"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "userAgent": {
+      "type": "string"
+    },
+    "timeStamp": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
