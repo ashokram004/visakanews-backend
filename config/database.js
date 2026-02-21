@@ -1,61 +1,24 @@
-const path = require('path');
-
 module.exports = ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite');
+  const client = env("DATABASE_CLIENT");
 
-  const connections = {
-    mysql: {
+  return {
+    connection: {
+      client: client,
       connection: {
-        host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 3306),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
-        ssl: env.bool('DATABASE_SSL', false) && {
-          rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
-        },
-      },
-      pool: {
-        min: env.int('DATABASE_POOL_MIN', 0),
-        max: env.int('DATABASE_POOL_MAX', 5),
-      },
-    },
-
-    postgres: {
-      connection: {
-        connectionString: env('DATABASE_URL'),
-        ssl: env.bool('DATABASE_SSL', true)
+        connectionString: env("DATABASE_URL"),
+        ssl: env.bool("DATABASE_SSL", true)
           ? { rejectUnauthorized: false }
           : false,
       },
       pool: {
-        min: env.int('DATABASE_POOL_MIN', 0),
-        max: env.int('DATABASE_POOL_MAX', 5),
-		acquireTimeoutMillis: 30000,
-		idleTimeoutMillis: 30000,
-		reapIntervalMillis: 1000,
+        min: 2,
+        max: 10,
+        acquireTimeoutMillis: 30000,
+        idleTimeoutMillis: 30000,
+        reapIntervalMillis: 1000,
       },
-    },
-    
-
-    sqlite: {
-      connection: {
-        filename: path.join(
-          __dirname,
-          '..',
-          env('DATABASE_FILENAME', '.tmp/data.db')
-        ),
-      },
-      useNullAsDefault: true,
-    },
-  };
-
-  return {
-    connection: {
-      client,
-      ...connections[client],
       acquireConnectionTimeout: env.int(
-        'DATABASE_CONNECTION_TIMEOUT',
+        "DATABASE_CONNECTION_TIMEOUT",
         60000
       ),
     },
