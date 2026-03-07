@@ -22,18 +22,19 @@
     },
     "primaryCategory": {
       "type": "enumeration",
-      "required": true,
+      "required": false,
+      "default": "News",
       "enum": [
         "News",
         "Politics",
         "Jobs",
         "Education",
         "Movies",
+        "Sports",
         "Business",
         "Technology",
         "Medical",
-        "Environment",
-        "Trending"
+        "Environment"
       ]
     },
     "content": {
@@ -52,7 +53,7 @@
     },
     "isFeatured": {
       "type": "boolean",
-      "required": true,
+      "required": false,
       "default": true
     },
     "dynamicTabs": {

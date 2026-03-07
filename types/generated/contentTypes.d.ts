@@ -528,9 +528,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::dynamic-tab.dynamic-tab'
     >;
-    isFeatured: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
+    isFeatured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -544,14 +542,14 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'Jobs',
         'Education',
         'Movies',
+        'Sports',
         'Business',
         'Technology',
         'Medical',
         'Environment',
-        'Trending',
       ]
     > &
-      Schema.Attribute.Required;
+      Schema.Attribute.DefaultTo<'News'>;
     publishedAt: Schema.Attribute.DateTime;
     shares: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
@@ -807,7 +805,7 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     profileImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     profileType: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    shortBio: Schema.Attribute.Text & Schema.Attribute.Required;
+    shortBio: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

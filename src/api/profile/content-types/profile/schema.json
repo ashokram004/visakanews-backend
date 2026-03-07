@@ -49,7 +49,7 @@
     },
     "shortBio": {
       "type": "text",
-      "required": true
+      "required": false
     },
     "homeVideo": {
       "type": "string"
