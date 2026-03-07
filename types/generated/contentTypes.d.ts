@@ -778,6 +778,7 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.Text;
     coverImage: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -791,6 +792,9 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
       'api::profile.profile'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.Text;
+    mailId: Schema.Attribute.String;
+    mobileNo: Schema.Attribute.String;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     profile_activities: Schema.Attribute.Relation<
       'oneToMany',

@@ -20,6 +20,15 @@
       "targetField": "name",
       "required": true
     },
+    "mobileNo": {
+      "type": "string"
+    },
+    "mailId": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
     "profileType": {
       "type": "string"
     },
@@ -44,6 +53,9 @@
     },
     "homeVideo": {
       "type": "string"
+    },
+    "location": {
+      "type": "text"
     },
     "detailedBio": {
       "type": "blocks"
