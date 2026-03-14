@@ -60,6 +60,9 @@
     "detailedBio": {
       "type": "blocks"
     },
+    "biography": {
+      "type": "blocks"
+    },
     "isActive": {
       "type": "boolean",
       "default": true
