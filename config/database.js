@@ -1,6 +1,10 @@
 module.exports = ({ env }) => {
   const client = env("DATABASE_CLIENT");
 
+  // Force IPv4 DNS resolution globally — Render does not support IPv6 outbound
+  const dns = require("dns");
+  dns.setDefaultResultOrder("ipv4first");
+
   return {
     connection: {
       client: client,
